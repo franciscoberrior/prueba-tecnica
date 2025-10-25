@@ -12,9 +12,9 @@ services:
     depends_on:
       - db
       - rabbitmq
-  microservices-master:
+  account-core:
     build:
-      context: ./microservices-master
+      context: ./account-core
       dockerfile: Dockerfile
     image: microservices-master:latest
     ports:
