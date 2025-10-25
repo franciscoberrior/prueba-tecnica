@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/client-core/Dockerfile">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/client-core/Dockerfile" />
+              <option name="originalContent" value="FROM eclipse-temurin:17-jre&#10;WORKDIR /build&#10;COPY . .&#10;RUN ./mvnw clean package -DskipTests&#10;RUN mkdir /app&#10;COPY target/*.jar /app/applicationAccount.jar&#10;WORKDIR /app&#10;CMD java -jar applicationAccount.jar" />
+              <option name="updatedContent" value="FROM eclipse-temurin:17-jre&#10;WORKDIR /build&#10;COPY . .&#10;RUN ./mvnw clean package -DskipTests&#10;RUN mkdir /app&#10;COPY target/*.jar /app/applicationAccount.jar&#10;WORKDIR /app&#10;CMD java -jar applicationAccount.jar" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

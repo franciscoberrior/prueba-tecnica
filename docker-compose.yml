@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  client-core:
+    build:
+      context: ./client-core
+      dockerfile: Dockerfile
+    image: client-core:latest
+    ports:
+      - "8081:8080"
+    environment:
+      - DB_URL=db
+    depends_on:
+      - db
+      - rabbitmq
+  microservices-master:
+    build:
+      context: ./microservices-master
+      dockerfile: Dockerfile
+    image: microservices-master:latest
+    ports:
+      - "8082:8080"
+    environment:
+      - DB_URL=db
+    depends_on:
+      - db
+      - rabbitmq
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./docker/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
